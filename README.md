@@ -1,2 +1,6 @@
 # favourites-media-manager
-Open-source typescript media manager API
+
+## [favourites.me](https://favourites.me)
+
+Open-source media manager API written in typescript. I built this for my media manager Letterboxd-alternative website [favourites.me](https://favourites.me).
+

@@ -1,0 +1,35 @@
+{
+  "name": "favourites-media-manager",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A module for managing favourite media items, with CSV and Google Drive support.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lem0naise/favourites-media-manager.git"
+  },
+  "keywords": [
+    "media",
+    "manager",
+    "csv",
+    "google-drive",
+    "favourites"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lem0naise/favourites-media-manager/issues"
+  },
+  "homepage": "https://github.com/Lem0naise/favourites-media-manager#readme",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}

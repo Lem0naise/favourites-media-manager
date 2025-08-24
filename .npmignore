@@ -1,0 +1,6 @@
+src/
+tests/
+*.log
+*.ts
+*.map
+node_modules/

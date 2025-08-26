@@ -1,4 +1,9 @@
-const matches = (keywords: string[], matchValue: string) => keywords.some(keyword => matchValue.includes(keyword));
+const matches = (keywords: string[], s: string): boolean => {
+    return keywords.some(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'i')
+        return regex.test(s);
+    });
+}
 
 export const mapStringToStatus = (status?: string, hasRating?: boolean): 'watched' | 'watching' | 'watchlist' => {
     if (!status && !hasRating) return 'watchlist';
@@ -26,8 +31,8 @@ export const mapStringToStatus = (status?: string, hasRating?: boolean): 'watche
     ];
 
     if (matches(watchlistKeywords, s)) return 'watchlist';
-    if (matches(watchingKeywords, s)) return 'watching';
     if (matches(watchedKeywords, s)) return 'watched';
+    if (matches(watchingKeywords, s)) return 'watching';
     if (!hasRating) return 'watchlist';
     return 'watched';
 }
@@ -35,8 +40,8 @@ export const mapStringToStatus = (status?: string, hasRating?: boolean): 'watche
 export const mapStringToType = (typeString: string | undefined, defaultType?: 'film' | 'tv' | 'game' | 'book' | 'boardgame'): 'film' | 'tv' | 'game' | 'book' | 'boardgame' => {
     if (!typeString) return defaultType || 'film';
     const typeValue = typeString.toLowerCase().trim();
-    const tvKeywords = ['tv', 'show', 'series', 'television', 'tv show', 'tv series', 'serie', 'episode', 'drama',
-        'mini-series', 'miniseries', 'webseries', 'web series', 'season', 'anime', 'animation', 'cartoon'];
+    const tvKeywords = ['tv', 'show', 'series', 'television', 'tv show', 'tv series', 'serie', 'episode',
+        'mini-series', 'miniseries', 'webseries', 'web series', 'season'];
     const boardgameKeywords = ['board game', 'boardgame', 'tabletop', 'card game', 'board', 'table game', 'tabletop game',
         'tabletop rpg', 'rpg', 'tabletop roleplaying', 'tabletop role-playing', 'tabletopgame', 'tabletopgames'];
     const gameKeywords = ['game', 'video', 'video game', 'videogame', 'gaming', 'pc', 'console', 'mobile game', 'arcade',
@@ -45,7 +50,7 @@ export const mapStringToType = (typeString: string | undefined, defaultType?: 'f
     const bookKeywords = ['book', 'novel', 'literature', 'audiobook', 'ebook', 'non-fiction', 'nonfiction', 'fiction',
         'reading', 'manga', 'comic', 'graphic novel', 'light novel', 'magazine', 'manual', 'textbook',
         'guide', 'journal', 'publication', 'story', 'short story', 'poetry', 'poem'];
-    const filmKeywords = ['film', 'movie', 'cinema', 'documentary', 'short', 'feature', 'motion picture', 'picture',
+    const filmKeywords = ['film', 'movie', 'cinema', 'documentary', 'feature', 'motion picture', 'picture',
         'doc', 'docu', 'featurette', 'screening', 'flick', 'biopic', 'animation film', 'animated film'];
     if (matches(tvKeywords, typeValue)) return 'tv';
     if (matches(boardgameKeywords, typeValue)) return 'boardgame';

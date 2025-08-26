@@ -69,7 +69,7 @@ export function getFilteredMedia(mediaItems: MediaItem[], filterOptions: FilterO
 };
 
 
-export function getWatchedMedia(mediaItems: MediaItem[]){
+export function getWatched(mediaItems: MediaItem[]){
     return getFilteredMedia(mediaItems, {status: 'watched'})
 }
 
@@ -77,6 +77,6 @@ export function getWatching(mediaItems: MediaItem[]){
     return getFilteredMedia(mediaItems, {status: 'watching'})
 }
 
-export function getWatchlistMedia(mediaItems: MediaItem[]){
+export function getWatchlist(mediaItems: MediaItem[]){
     return getFilteredMedia(mediaItems, {status: 'watchlist'})
 }
